@@ -44,7 +44,7 @@ void modifiedalpha(){
 			return;
 		}
 	}
-	cout<<"guess of pos(for x^x-4): "<<g<<" itterations: "<<it<<endl;
+	cout<<"guess of pos: "<<g<<" itterations: "<<it<<endl;
 }
 int main(){
 	cout<<setprecision(9)<<fixed;

@@ -26,7 +26,7 @@ void sqrtfun(){
 			return;
 		}
 	}
-    cout<<"Num: "<<num<<" guess of abs: "<<g<<" itterations: "<<it<<endl;
+    cout<<"Num: "<<num<<" guess of pos: "<<g<<" itterations: "<<it<<endl;
 }
 void modifiedalpha(){
 	double g=2.0;
@@ -44,7 +44,7 @@ void modifiedalpha(){
 			return;
 		}
 	}
-	cout<<"guess of abs(for x^x-4): "<<g<<" itterations: "<<it<<endl;
+	cout<<"guess of pos(for x^x-4): "<<g<<" itterations: "<<it<<endl;
 }
 int main(){
 	cout<<setprecision(9)<<fixed;

@@ -15,7 +15,7 @@ int main(){
 	cout<<setprecision(9)<<fixed;
 	double g=-2.0;
 	int it=0;
-	double l=eps,r=1000;
+	double l=-10000,r=10000;
 	
 	while(r-l>eps){
 		it++;

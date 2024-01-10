@@ -1,44 +1,55 @@
 #include<bits/stdc++.h>
 #define double long double
 using namespace std;
-const double eps=1e-3;
+const double eps=1e-9;
 double fun1(double x){
-	return (x-3)*(x-1)*(x-3)*(x-1);
+	return (x-3)*(x-1)*(x-1);
 }
 double fun2(double x){
-	return 4*(x-3)*(x-2)*(x-1);
-}	
+	return (3*x-7)*(x-1);
+}
+double newton(double g){
+	return g-fun1(g)/fun2(g);
+}
 int main(){
 	cout<<setprecision(9)<<fixed;
-	double g=-2;
+	double g=-2.0;
 	int it=0;
-	double l=eps,r=1e9;
-	bool b=true;
+	double l=eps,r=1000;
+	
 	while(r-l>eps){
 		it++;
 		double m=(l+r)/2;
-		double g_next=g-fun1(g)/fun2(g);
-		
+		double new_g=newton(g);
 		if(fabs(fun1(m))<=eps){
-			cout<<"guess: "<<m<<" it: "<<it<<endl;
+			cout<<"(bisection)g: "<<m<<" it: "<<it<<endl;
 			return 0;
 		}
-		else if(fabs(g_next-g)<=eps){
-			g=g_next;
-			break;
+		
+		else if(fabs(new_g-g)<=eps){
+			cout<<"(newton)g: "<<new_g<<" it: "<<it<<endl;
+			return 0;
 		}
-		else if(b){
-			if(fun1(l)*g_next<0){
-				r=g_next;
-			}
-			else if(fun1(l)*fun1(m)<0){
-				r=m;
+		
+		else if(fun1(l)*fun1(m)<0){
+			r=m;
+			if(l>new_g || m<new_g){
+				g=(m+l)/2;
 			}
 			else{
-				l=m;
+				g=new_g;
 			}
 		}
-		g=g_next;
+		
+		else{
+			l=m;
+			if(new_g<m || new_g>r){
+				g=(m+r)/2;
+			}
+			else{
+				g=new_g;
+			}		
+		}
 	}
-	cout<<"guess: "<<g<<" it:"<<it<<endl;
+	cout<<"(bisection)g: "<<(l+r)/2<<" it:"<<it<<endl;
 }

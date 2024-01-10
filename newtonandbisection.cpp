@@ -26,7 +26,6 @@ int main(){
 		double new_g=newton(g);
 		
 		cout<<min(fabs(new_g-g),(r-l))<<" "<<it<<endl;
-		cout<<fabs(new_g-g)<<" "<<it<<endl;
 		
 		if(fabs(new_g-g)<=eps){
 //			cout<<"(newton)g: "<<new_g<<" it: "<<it<<endl;
